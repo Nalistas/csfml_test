@@ -13,23 +13,19 @@
 #include <stdlib.h>
 #include "duck.h"
 
-sfSprite *create_sprite(char *path);
+sfSprite *create_sprite(sfTexture *texture)
+{
+    sfSprite *sprite = sfSprite_create();
+    sfSprite_setTexture(sprite, texture, sfFalse);
+    return sprite;
+}
 
-
-duck_t *init_duck(char *path)
+duck_t *init_duck(sfTexture *texture)
 {
     duck_t *new_duck = malloc(sizeof(duck_t));
     (new_duck->position).x = -100;
     (new_duck->position).y = 300;
-    new_duck->speed = 10;
-    new_duck->sprite = create_sprite(path);
+    new_duck->speed = 15;
+    new_duck->sprite = create_sprite(texture);
     return new_duck;
-}
-
-sfSprite *create_sprite(char *path)
-{
-    sfTexture *texture = sfTexture_createFromFile(path, NULL);
-    sfSprite *sprite = sfSprite_create();
-    sfSprite_setTexture(sprite, texture, sfFalse);
-    return sprite;
 }

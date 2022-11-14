@@ -19,7 +19,7 @@
         int speed;
     } duck_t;
 
-    sfSprite *create_sprite(char *path);
-    duck_t *init_duck(char *path);
+    sfSprite *create_sprite(sfTexture *);
+    duck_t *init_duck(sfTexture *);
 
 #endif
