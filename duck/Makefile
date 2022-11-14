@@ -26,7 +26,6 @@ clean:
 fclean:		clean
 		rm -f $(NAME)
 		rm -f ../$(NAME)
-		rm -f ../include/duck.h
 
 re:		fclean all
 
