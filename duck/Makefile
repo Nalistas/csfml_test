@@ -14,7 +14,7 @@ NAME	=	libduck.a
 CFLAGS	+= -Wall -Wextra
 
 all:		$(NAME)
-		
+
 $(NAME):	$(OBJ)
 		ar rc $(NAME) $(OBJ)
 		cp duck.h ../include

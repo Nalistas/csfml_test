@@ -20,26 +20,21 @@ sfSprite *background);
 int main(void)
 {
     sfRenderWindow *window = create_window(974, 767, 64, "first window");
+    sfRenderWindow_setFramerateLimit(window, 180);
     sfEvent event;
-    sfTexture *texture_duck = sfTexture_createFromFile("texture/wisp.png", NULL);
-    sfTexture *texture_background = sfTexture_createFromFile("texture/bg.png", NULL);
-    duck_t *duck = init_duck(texture_duck);
-    sfSprite *background = create_sprite(texture_background);
+    sfTexture *texture_bg = sfTexture_createFromFile("texture/bg.png", NULL);
+    duck_t *duck = init_duck("texture/wisp.png");
+    sfSprite *background = create_sprite(texture_bg);
     while (sfRenderWindow_isOpen(window)) {
         manage_event(window, event);
-        duck->position.x +=
-        0.00001 * sfRenderWindow_getSize(window).x * duck->speed;
-        if (duck->position.x > sfRenderWindow_getSize(window).x) {
-            duck->position.x = -100;
-        }
+        move_duck(duck, sfRenderWindow_getSize(window).x);
         sfSprite_setPosition(duck->sprite, duck->position);
         display_all(window, duck->sprite, background);
     }
     sfRenderWindow_destroy(window);
     sfSprite_destroy(background);
-    sfTexture_destroy(texture_duck);
-    sfTexture_destroy(texture_background);
-    free(duck);
+    sfTexture_destroy(texture_bg);
+    destroy_duck(duck);
 }
 
 void display_all(sfRenderWindow *window, sfSprite *sprite, sfSprite *background)
