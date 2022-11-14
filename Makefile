@@ -26,10 +26,12 @@ $(NAME):	$(OBJ)
 
 clean:
 		make clean -C ./init/
+		make clean -C ./duck/
 		rm -f $(OBJ)
 
 fclean: 	clean
 		make fclean -C ./init/
+		make fclean -C ./duck/
 		rm -f window
 
 re:		fclean all

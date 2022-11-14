@@ -1,0 +1,3 @@
+./duck/init_duck.o:1: MAJOR:C-O1
+./duck/libduck.a:1: MAJOR:C-O1
+./libduck.a:1: MAJOR:C-O1
